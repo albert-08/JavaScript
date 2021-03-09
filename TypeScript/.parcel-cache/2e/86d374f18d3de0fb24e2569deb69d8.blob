@@ -131,12 +131,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"07a652ecf269ac342e2bfcbe33a5dc4a":[function(require,module,exports) {
+})({"195b8ce06b77a237cdc404c2db38ac3f":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = 41863;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "7465600f7c89e2463bf4e4c5252c3d6d";
+module.bundle.HMR_BUNDLE_ID = "adc5e1ceb49576cbfe89c205ea94a188";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH */
 
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -407,104 +407,41 @@ function hmrAcceptRun(bundle, id) {
 
   acceptedAssets[id] = true;
 }
-},{}],"bd665bee0b094abac42ce96c8f8b084d":[function(require,module,exports) {
-console.log('Hello, TypeScript');
+},{}],"be87b464e36789c77ddec7162ed62f07":[function(require,module,exports) {
+"use strict";
 
-function sum(a, b) {
-  return a + b;
+var _Singleton = _interopRequireDefault(require("./Singleton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const a = _Singleton.default.getInstance();
+
+const b = _Singleton.default.getInstance();
+
+console.log('A es igual a B?', a == b);
+},{"./Singleton":"dc1921eb125828e6f555ff7d780ee48c"}],"dc1921eb125828e6f555ff7d780ee48c":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+class Singleton {
+  constructor() {}
+
+  static getInstance() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Singleton();
+    }
+
+    return Singleton.instance;
+  }
+
 }
 
-const suma = sum(2, 3);
-console.log(suma); //Boolean
+var _default = Singleton;
+exports.default = _default;
+},{}]},{},["195b8ce06b77a237cdc404c2db38ac3f","be87b464e36789c77ddec7162ed62f07"], null)
 
-let muted = true;
-muted = false; //Números
-
-let age = 6;
-let numerador = 42;
-let denominador = age;
-let resultado = numerador / denominador;
-console.log(resultado); //String
-
-let nombre = 'Frida';
-let saludo = `Me llamo ${nombre}`;
-console.log(saludo); //Arrays
-
-let people = [];
-people = ["Frida", "Daniela", "Mariza"]; //people.push("9000")
-
-console.log(people);
-let peopleAndNumbers = [];
-peopleAndNumbers.push('Frida');
-console.log(peopleAndNumbers);
-peopleAndNumbers.push(1996);
-console.log(peopleAndNumbers); //Enum
-
-var Color;
-
-(function (Color) {
-  Color["Rojo"] = "Rojo";
-  Color["Verde"] = "Verde";
-  Color["Azul"] = "Azul";
-  Color["Amarillo"] = "Amarillo";
-})(Color || (Color = {}));
-
-let colorFavorito = Color.Azul;
-console.log(`Mi color favorito es ${colorFavorito}`); //Any
-
-let comodin = 'Joker';
-console.log(comodin);
-comodin = {
-  type: 'Wilcard'
-};
-console.log(comodin); //Object
-
-let someObject = {
-  type: "Wildcard"
-};
-console.log(someObject); //funciones
-
-function add(a, b) {
-  return a + b;
-}
-
-const res = add(4, 6);
-console.log(res);
-
-function createAdder(a) {
-  return function (b) {
-    return a + b;
-  };
-}
-
-const addFour = createAdder(4);
-const fourPlus6 = addFour(6);
-
-function fullName(firstName, lastName) {
-  return `${firstName} ${lastName}`;
-}
-
-const frida = fullName('Frida', 'Benitez');
-console.log(frida); //Interfaces
-
-let rect = {
-  ancho: 4,
-  alto: 8 //color: Color.Verde
-
-};
-
-function area(r) {
-  return r.alto * r.ancho;
-}
-
-const areaRect = area(rect);
-console.log(areaRect);
-
-rect.toString = function () {
-  return this.color ? `Un rectangulo ${this.color}` : `Un rectangulo`;
-};
-
-console.log(rect.toString());
-},{}]},{},["07a652ecf269ac342e2bfcbe33a5dc4a","bd665bee0b094abac42ce96c8f8b084d"], null)
-
-//# sourceMappingURL=TypeScript.7465600f.js.map
+//# sourceMappingURL=singleton.adc5e1ce.js.map

@@ -131,12 +131,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"07a652ecf269ac342e2bfcbe33a5dc4a":[function(require,module,exports) {
+})({"ac7f53aa36ed349e70e70f400805efbc":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = 41863;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "7465600f7c89e2463bf4e4c5252c3d6d";
+module.bundle.HMR_BUNDLE_ID = "8fb3c00fcd34de404bb711fceba6ab23";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH */
 
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -407,104 +407,51 @@ function hmrAcceptRun(bundle, id) {
 
   acceptedAssets[id] = true;
 }
-},{}],"bd665bee0b094abac42ce96c8f8b084d":[function(require,module,exports) {
-console.log('Hello, TypeScript');
+},{}],"5c6ed60208e01141f5277cbe4d549632":[function(require,module,exports) {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function sum(a, b) {
-  return a + b;
+class BitcoinPrice {
+  constructor() {
+    _defineProperty(this, "observers", []);
+
+    const el = document.querySelector('#value');
+    el.addEventListener('input', () => {
+      this.notify(el.value);
+    });
+  }
+
+  subscribe(observer) {
+    this.observers.push(observer);
+  }
+
+  unsubscribe(observer) {
+    const index = this.observers.findIndex(obs => {
+      return obs === observer;
+    });
+    this.observers.splice(index, 1);
+  }
+
+  notify(data) {
+    this.observers.forEach(observer => observer.update(data));
+  }
+
 }
 
-const suma = sum(2, 3);
-console.log(suma); //Boolean
+class PriceDisplay {
+  constructor() {
+    this.el = document.querySelector('#price');
+  }
 
-let muted = true;
-muted = false; //Números
+  update(data) {
+    this.el.innerText = data;
+  }
 
-let age = 6;
-let numerador = 42;
-let denominador = age;
-let resultado = numerador / denominador;
-console.log(resultado); //String
-
-let nombre = 'Frida';
-let saludo = `Me llamo ${nombre}`;
-console.log(saludo); //Arrays
-
-let people = [];
-people = ["Frida", "Daniela", "Mariza"]; //people.push("9000")
-
-console.log(people);
-let peopleAndNumbers = [];
-peopleAndNumbers.push('Frida');
-console.log(peopleAndNumbers);
-peopleAndNumbers.push(1996);
-console.log(peopleAndNumbers); //Enum
-
-var Color;
-
-(function (Color) {
-  Color["Rojo"] = "Rojo";
-  Color["Verde"] = "Verde";
-  Color["Azul"] = "Azul";
-  Color["Amarillo"] = "Amarillo";
-})(Color || (Color = {}));
-
-let colorFavorito = Color.Azul;
-console.log(`Mi color favorito es ${colorFavorito}`); //Any
-
-let comodin = 'Joker';
-console.log(comodin);
-comodin = {
-  type: 'Wilcard'
-};
-console.log(comodin); //Object
-
-let someObject = {
-  type: "Wildcard"
-};
-console.log(someObject); //funciones
-
-function add(a, b) {
-  return a + b;
 }
 
-const res = add(4, 6);
-console.log(res);
+const value = new BitcoinPrice();
+const display = new PriceDisplay();
+value.subscribe(display);
+setTimeout(() => value.unsubscribe(display), 5000);
+},{}]},{},["ac7f53aa36ed349e70e70f400805efbc","5c6ed60208e01141f5277cbe4d549632"], null)
 
-function createAdder(a) {
-  return function (b) {
-    return a + b;
-  };
-}
-
-const addFour = createAdder(4);
-const fourPlus6 = addFour(6);
-
-function fullName(firstName, lastName) {
-  return `${firstName} ${lastName}`;
-}
-
-const frida = fullName('Frida', 'Benitez');
-console.log(frida); //Interfaces
-
-let rect = {
-  ancho: 4,
-  alto: 8 //color: Color.Verde
-
-};
-
-function area(r) {
-  return r.alto * r.ancho;
-}
-
-const areaRect = area(rect);
-console.log(areaRect);
-
-rect.toString = function () {
-  return this.color ? `Un rectangulo ${this.color}` : `Un rectangulo`;
-};
-
-console.log(rect.toString());
-},{}]},{},["07a652ecf269ac342e2bfcbe33a5dc4a","bd665bee0b094abac42ce96c8f8b084d"], null)
-
-//# sourceMappingURL=TypeScript.7465600f.js.map
+//# sourceMappingURL=observer.8fb3c00f.js.map

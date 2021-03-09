@@ -1,0 +1,11 @@
+"use strict";
+
+var _Singleton = _interopRequireDefault(require("./Singleton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const a = _Singleton.default.getInstance();
+
+const b = _Singleton.default.getInstance();
+
+console.log('A es igual a B?', a == b);

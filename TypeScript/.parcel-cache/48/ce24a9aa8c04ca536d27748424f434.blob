@@ -131,12 +131,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"07a652ecf269ac342e2bfcbe33a5dc4a":[function(require,module,exports) {
+})({"803342d6d48c5ee3aaa4f293cc4d2479":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = 41863;
 var HMR_ENV_HASH = "d751713988987e9331980363e24189ce";
-module.bundle.HMR_BUNDLE_ID = "7465600f7c89e2463bf4e4c5252c3d6d";
+module.bundle.HMR_BUNDLE_ID = "ad84288749c36521eedcce0747c71420";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH */
 
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -407,104 +407,58 @@ function hmrAcceptRun(bundle, id) {
 
   acceptedAssets[id] = true;
 }
-},{}],"bd665bee0b094abac42ce96c8f8b084d":[function(require,module,exports) {
-console.log('Hello, TypeScript');
+},{}],"e10a7ae3479d5169b1e2a2507960e540":[function(require,module,exports) {
+class Field {
+  constructor(input) {
+    this.input = input;
+    this.errors = [];
+    let errorMessage = document.createElement('p');
+    errorMessage.className = 'text-danger';
+    this.input.parentNode.insertBefore(errorMessage, this.input.nextSibling);
+    this.input.addEventListener('input', () => {
+      this.errors = [];
+      this.validate();
+      errorMessage.innerText = this.errors[0] || '';
+    });
+  }
 
-function sum(a, b) {
-  return a + b;
+  validate() {}
+
 }
 
-const suma = sum(2, 3);
-console.log(suma); //Boolean
+function RequiredFieldDecorator(field) {
+  let validate = field.validate;
 
-let muted = true;
-muted = false; //Números
+  field.validate = function () {
+    validate();
+    let value = field.input.value;
 
-let age = 6;
-let numerador = 42;
-let denominador = age;
-let resultado = numerador / denominador;
-console.log(resultado); //String
-
-let nombre = 'Frida';
-let saludo = `Me llamo ${nombre}`;
-console.log(saludo); //Arrays
-
-let people = [];
-people = ["Frida", "Daniela", "Mariza"]; //people.push("9000")
-
-console.log(people);
-let peopleAndNumbers = [];
-peopleAndNumbers.push('Frida');
-console.log(peopleAndNumbers);
-peopleAndNumbers.push(1996);
-console.log(peopleAndNumbers); //Enum
-
-var Color;
-
-(function (Color) {
-  Color["Rojo"] = "Rojo";
-  Color["Verde"] = "Verde";
-  Color["Azul"] = "Azul";
-  Color["Amarillo"] = "Amarillo";
-})(Color || (Color = {}));
-
-let colorFavorito = Color.Azul;
-console.log(`Mi color favorito es ${colorFavorito}`); //Any
-
-let comodin = 'Joker';
-console.log(comodin);
-comodin = {
-  type: 'Wilcard'
-};
-console.log(comodin); //Object
-
-let someObject = {
-  type: "Wildcard"
-};
-console.log(someObject); //funciones
-
-function add(a, b) {
-  return a + b;
-}
-
-const res = add(4, 6);
-console.log(res);
-
-function createAdder(a) {
-  return function (b) {
-    return a + b;
+    if (!value) {
+      field.errors.push('Requerido');
+    }
   };
+
+  return field;
 }
 
-const addFour = createAdder(4);
-const fourPlus6 = addFour(6);
+function EmailFieldDecorator(field) {
+  let validate = field.validate;
 
-function fullName(firstName, lastName) {
-  return `${firstName} ${lastName}`;
+  field.validate = function () {
+    validate();
+    let value = field.input.value;
+
+    if (value.indexOf('@') === -1) {
+      field.errors.push('Debe ser un email');
+    }
+  };
+
+  return field;
 }
 
-const frida = fullName('Frida', 'Benitez');
-console.log(frida); //Interfaces
+let field = new Field(document.querySelector('#email'));
+field = RequiredFieldDecorator(field);
+field = EmailFieldDecorator(field);
+},{}]},{},["803342d6d48c5ee3aaa4f293cc4d2479","e10a7ae3479d5169b1e2a2507960e540"], null)
 
-let rect = {
-  ancho: 4,
-  alto: 8 //color: Color.Verde
-
-};
-
-function area(r) {
-  return r.alto * r.ancho;
-}
-
-const areaRect = area(rect);
-console.log(areaRect);
-
-rect.toString = function () {
-  return this.color ? `Un rectangulo ${this.color}` : `Un rectangulo`;
-};
-
-console.log(rect.toString());
-},{}]},{},["07a652ecf269ac342e2bfcbe33a5dc4a","bd665bee0b094abac42ce96c8f8b084d"], null)
-
-//# sourceMappingURL=TypeScript.7465600f.js.map
+//# sourceMappingURL=decorator.ad842887.js.map
